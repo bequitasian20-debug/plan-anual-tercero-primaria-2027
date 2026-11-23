@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Anual 2027 - Expresión Artística - Colegio Montano</title>
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap">
+    <style>
+        :root {
+            --azul-institucional: #1F3C88;
+            --azul-secundario: #3F72AF;
+            --blanco: #FFFFFF;
+            --amarillo-institucional: #F2C94C;
+            --gris-fondo: #F4F6F9;
+            --gris-borde: #E2E8F0;
+            --texto-oscuro: #2D3748;
+            --texto-suave: #4A5568;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-fondo);
+            color: var(--texto-oscuro);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* BARRA SUPERIOR E ENCABEZADO */
+        .top-bar {
+            background-color: var(--azul-institucional);
+            color: var(--blanco);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-img {
+            max-height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--amarillo-institucional);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-details {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+            opacity: 0.95;
+            margin-top: 2px;
+            flex-wrap: wrap;
+        }
+
+        .header-details span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .fullscreen-btn {
+            background-color: var(--amarillo-institucional);
+            color: var(--azul-institucional);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .fullscreen-btn:hover {
+            background-color: #e5b83b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* NAVEGACIÓN HORIZONTAL POR PESTAÑAS */
+        .nav-tabs-container {
+            background-color: var(--azul-secundario);
+            padding: 0 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            scrollbar-width: thin;
+        }
+
+        .nav-tabs-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .nav-tabs-container::-webkit-scrollbar-thumb {
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 3px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .tab-item {
+            padding: 14px 18px;
+            color: var(--blanco);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-bottom: 4px solid transparent;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+
+        .tab-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--amarillo-institucional);
+        }
+
+        .tab-item.active {
+            background-color: var(--blanco);
+            color: var(--azul-institucional);
+            border-bottom: 4px solid var(--amarillo-institucional);
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-container {
+            flex: 1;
+            padding: 28px 24px;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ESTILOS DE TARJETAS Y CONTENIDO */
+        .card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--gris-borde);
+            margin-bottom: 24px;
+        }
+
+        .card-header {
+            border-bottom: 2px solid var(--gris-borde);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-title {
+            color: var(--azul-institucional);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .card-title i {
+            color: var(--azul-secundario);
+        }
+
+        /* ESTILOS DE TEXTO E ITÁLICAS REQUERIDAS */
+        p, li {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--texto-suave);
+        }
+
+        .italic-title {
+            font-style: italic;
+            font-weight: 700;
+            color: var(--azul-institucional);
+            display: block;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .italic-subtitle {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--azul-secundario);
+            margin-top: 10px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .italic-text {
+            font-style: italic;
+        }
+
+        .highlight-badge {
+            background-color: rgba(242, 201, 76, 0.2);
+            border-left: 4px solid var(--amarillo-institucional);
+            padding: 12px 16px;
+            margin: 14px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* GRIDS DE COMPETENCIAS Y CONTENIDOS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .custom-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .custom-list li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 10px;
+        }
+
+        .custom-list li::before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 8px;
+            color: var(--azul-secundario);
+        }
+
+        .competencia-cm-card {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-top: 4px solid var(--azul-institucional);
+            border-radius: 8px;
+            padding: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .competencia-cm-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .metodo-step {
+            background-color: #F8FAFC;
+            border-left: 5px solid var(--azul-institucional);
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .unit-box {
+            background-color: var(--blanco);
+            border: 1px solid var(--gris-borde);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .unit-header {
+            background-color: var(--azul-institucional);
+            color: var(--blanco);
+            padding: 14px 18px;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .unit-body {
+            padding: 18px;
+        }
+
+        .footer-bar {
+            text-align: center;
+            padding: 16px;
+            background-color: var(--azul-institucional);
+            color: var(--blanco);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .fullscreen-btn {
+                align-self: flex-end;
+            }
+            .main-container {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR INSTITUCIONAL -->
+    <header class="top-bar">
+        <div class="header-brand">
+            <img src="https://admisiones.colegiomontano.edu.gt/assets/img/logo-cm-blanco.webp" alt="Logo Colegio Montano" class="logo-img">
+            <div class="header-info">
+                <div class="header-title">Plan Anual de Expresión Artística</div>
+                <div class="header-details">
+                    <span><i class="fa-solid fa-graduation-cap"></i> <i>Curso: Expresión Artística (Teatro y Danza)</i></span>
+                    <span><i class="fa-solid fa-layer-group"></i> <i>Grado: Tercero Primaria</i></span>
+                    <span><i class="fa-solid fa-user-tie"></i> <i>Profesor: Rebeca Sian</i></span>
+                    <span><i class="fa-solid fa-calendar-days"></i> <i>Ciclo Escolar: 2027</i></span>
+                </div>
+            </div>
+        </div>
+        <button class="fullscreen-btn" onclick="toggleFullScreen()">
+            <i class="fa-solid fa-expand"></i> 🖥️ Pantalla Completa
+        </button>
+    </header>
+
+    <!-- NAVEGACIÓN POR PESTAÑAS HORIZONTALES -->
+    <nav class="nav-tabs-container">
+        <ul class="nav-tabs">
+            <li class="tab-item active" onclick="switchTab(0)">
+                <i class="fa-solid fa-book-open"></i> <i>I) DESCRIPTOR DEL CURSO</i>
+            </li>
+            <li class="tab-item" onclick="switchTab(1)">
+                <i class="fa-solid fa-bullseye"></i> <i>II) OBJETIVOS GENERALES</i>
+            </li>
+            <li class="tab-item" onclick="switchTab(2)">
+                <i class="fa-solid fa-award"></i> <i>III) COMPETENCIAS</i>
+            </li>
+            <li class="tab-item" onclick="switchTab(3)">
+                <i class="fa-solid fa-chart-line"></i> <i>IV) INDICADORES DE LOGRO</i>
+            </li>
+            <li class="tab-item" onclick="switchTab(4)">
+                <i class="fa-solid fa-chalkboard-user"></i> <i>V) MÉTODOS DIDÁCTICOS</i>
+            </li>
+            <li class="tab-item" onclick="switchTab(5)">
+                <i class="fa-solid fa-bookmark"></i> <i>VI) BIBLIOGRAFÍA</i>
+            </li>
+            <li class="tab-item" onclick="switchTab(6)">
+                <i class="fa-solid fa-list-check"></i> <i>VII) CONTENIDOS</i>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL / PANELES -->
+    <main class="main-container">
+
+        <!-- PESTAÑA I: DESCRIPTOR DEL CURSO -->
+        <section class="tab-panel active">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-book-open fa-lg"></i>
+                    <h2 class="card-title"><i>I) Descriptor del Curso de Expresión Artística</i></h2>
+                </div>
+                
+                <span class="italic-title">Finalidad del Área y Propósito Pedagógico</span>
+                <p>El Área de Expresión Artística se orienta al desarrollo de las posibilidades expresivas y creativas de las y los estudiantes. Promueve el discurrir con libertad, descubrir, disfrutar, inventar, imaginar, soñar, jugar, sentir y ser feliz. Permite el descubrimiento de la belleza en sus múltiples manifestaciones y el rompimiento de estereotipos culturales para apreciarla. Ofrece una oportunidad para la comunicación, expresión y apreciación de la vida y la belleza ya que fomenta, en los y las estudiantes, la habilidad para experimentar emociones estéticas que facilitan un mayor conocimiento de sí mismos y mismas y del mundo en que viven. Con ello fortalece su autoestima y se estimula el desarrollo de la inteligencia emocional.</p>
+
+                <div class="highlight-badge">
+                    <span class="italic-title" style="margin-top: 0;">Componentes del Área</span>
+                    <p><i>1. Percepción y experimentación de sensaciones (Senso-percepción).</i></p>
+                    <p><i>2. Expresión y comunicación artística (Creación e iniciación al criterio artístico).</i></p>
+                    <p><i>3. Apreciación y valoración cultural.</i></p>
+                </div>
+
+                <span class="italic-title">Subáreas Artísticas Integradas</span>
+                <p>El desarrollo de los aprendizajes de Expresión Artística se aborda desde las siguientes subáreas: <i>Educación Musical, Artes Plásticas, Teatro, Danza y Movimiento Creativo, Culturas Guatemaltecas y Artes Audiovisuales</i>.</p>
+                
+                <ul class="custom-list" style="margin-top: 10px;">
+                    <li><i>El Teatro:</i> Educa, divierte, libera y enriquece la expresión afectiva, intelectiva, gestual y oral de las y los estudiantes. Permite la creación y recreación de conflictos, sucesos y hechos por medio de la animación de lo abstracto con la palabra, el gesto y el movimiento.</li>
+                    <li><i>La Danza y el Movimiento Creativo:</i> Arte de crear y componer movimientos de acuerdo con determinados principios estructurales en la época, el ritmo, la melodía, el tiempo y el espacio definido con una cantidad de energía corporal establecida. La danza integra a todas las personas porque su interpretación involucra el movimiento del cuerpo, el pensamiento y el sentimiento.</li>
+                </ul>
+
+                <span class="italic-title">Valores y Creencias Institucionales (Colegio Montano Cortijo)</span>
+                <ul class="custom-list">
+                    <li><i>Libertad y Responsabilidad:</i> El alumno tiene la libertad de decisión con la responsabilidad de las mismas.</li>
+                    <li><i>Identidad y Lealtad:</i> Los estudiantes desarrollan la lealtad y la identificación con su institución educativa.</li>
+                    <li><i>Habilidades Sociales y Empatía:</i> El alumno crea y practica sus habilidades sociales cuando trabaja en equipo y participa activamente en la presentación de los temas expuestos en clase, demostrando empatía hacia sus compañeros, aceptando y respetando las diversas opiniones.</li>
+                    <li><i>Armonía y Respeto Intra-aula:</i> El trabajo dentro y durante la clase se desarrolla de manera correcta y enfocado en los valores para que las relaciones siempre sean de armonía y respeto entre compañeros y hacia el docente.</li>
+                    <li><i>Pluriculturalidad e Interculturalidad:</i> Se amplía el conocimiento acerca de la pluriculturalidad e interculturalidad de nuestra población para desarrollar tolerancia ante las diferencias entre personas de su entorno.</li>
+                    <li><i>Capacidad de Análisis y Síntesis:</i> Los temas tienen doble finalidad: el aprendizaje del alumno y la reflexión que conlleva al desarrollo de la capacidad de análisis y síntesis para analizar la información adquirida y poder argumentarla.</li>
+                    <li><i>Pensamiento Crítico y Metodología CM:</i> Se espera que el alumno analice, cuestione y construya ideas críticas y propias producto del conocimiento adquirido, puestas en práctica por medio de la metodología de los cuatro momentos del CM Cortijo.</li>
+                    <li><i>Integración del Conocimiento:</i> Se espera que el alumno integre el conocimiento y lo relacione con otras materias.</li>
+                    <li><i>Empatía Cultural:</i> Muestra empatía por la diversidad cultural de nuestro país y comunidad mediante el programa de valores desarrollado en el curso.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PESTAÑA II: OBJETIVOS GENERALES -->
+        <section class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-bullseye fa-lg"></i>
+                    <h2 class="card-title"><i>II) Objetivos Generales del Curso</i></h2>
+                </div>
+                
+                <p>Los objetivos generales del curso de Expresión Artística para Tercero Primaria están diseñados para fomentar el dominio expresivo y la valoración estética:</p>
+                
+                <div style="margin-top: 20px;">
+                    <div class="metodo-step">
+                        <span class="italic-title">Objetivo General 1</span>
+                        <p><i>Producir obras artísticas a través de la danza y el teatro que representen su entorno y cultura.</i></p>
+                    </div>
+
+                    <div class="metodo-step">
+                        <span class="italic-title">Objetivo General 2</span>
+                        <p><i>Apreciar el arte por medio de la danza y teatro.</i></p>
+                    </div>
+
+                    <div class="metodo-step">
+                        <span class="italic-title">Objetivo General 3</span>
+                        <p><i>Transmitir su percepción de la realidad social y cultural a través del teatro y la danza.</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PESTAÑA III: COMPETENCIAS -->
+        <section class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-award fa-lg"></i>
+                    <h2 class="card-title"><i>III) Competencias del Curso</i></h2>
+                </div>
+
+                <span class="italic-title">Competencias Académicas del Área (Tercero Primaria)</span>
+                <ul class="custom-list" style="margin-bottom: 24px;">
+                    <li><i>1. Utiliza técnicas de las distintas artes y los saberes tradicionales en la creación y producción estética.</i></li>
+                    <li><i>2. Aplica códigos estéticos y técnicos: musicales, gráfico plásticos, teatrales, kinestésicos y audiovisuales en la práctica cotidiana.</i></li>
+                    <li><i>3. Expresa sus sentimientos, pensamientos e interpretaciones de la realidad por medio de los lenguajes artísticos.</i></li>
+                    <li><i>4. Participa en la promoción y gestión de proyectos artísticos, individuales o integrados, que coadyuvan al fortalecimiento de sus cualidades expresivas.</i></li>
+                </ul>
+
+                <span class="italic-title" style="margin-bottom: 14px;">Competencias Institucionales CM (Competencias Blandas y Perfil Institucional)</span>
+                <div class="grid-4">
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-brain"></i> Pensamiento Crítico</span>
+                        <p><i>Pensamiento crítico y resolución de problemas de forma creativa e innovadora.</i></p>
+                    </div>
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-people-group"></i> Colaboración</span>
+                        <p><i>Colaboración y trabajo en equipo bajo dinámicas de participación asertiva.</i></p>
+                    </div>
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-comments"></i> Comunicación Efectiva</span>
+                        <p><i>Comunicación asertiva verbal, gestual y expresión artística fluida.</i></p>
+                    </div>
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-palette"></i> Creatividad e Innovación</span>
+                        <p><i>Creatividad e innovación en la producción escénica y corporal.</i></p>
+                    </div>
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-user-gear"></i> Aprendizaje Autónomo</span>
+                        <p><i>Aprendizaje autónomo, adaptabilidad y resiliencia ante desafíos.</i></p>
+                    </div>
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-earth-americas"></i> Conciencia Global</span>
+                        <p><i>Conciencia global y cultural mediante la apreciación de las expresiones artísticas.</i></p>
+                    </div>
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-heart-pulse"></i> Gestión Emocional</span>
+                        <p><i>Gestión emocional, desarrollo de la autoestima y expresividad sana.</i></p>
+                    </div>
+                    <div class="competencia-cm-card">
+                        <span class="italic-subtitle"><i class="fa-solid fa-crown"></i> Liderazgo Proactivo</span>
+                        <p><i>Desempeño de roles de liderazgo y productividad en actividades grupales.</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PESTAÑA IV: INDICADORES DE LOGRO -->
+        <section class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-chart-line fa-lg"></i>
+                    <h2 class="card-title"><i>IV) Indicadores de Logro</i></h2>
+                </div>
+                
+                <p>Criterios de evaluación para determinar el progreso del aprendizaje en Expresión Artística (Tercero Primaria):</p>
+                
+                <div class="grid-2" style="margin-top: 20px;">
+                    <div class="unit-box">
+                        <div class="unit-header">
+                            <span><i>Criterios Generales y de Movimiento</i></span>
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                        <div class="unit-body">
+                            <ul class="custom-list">
+                                <li><i>Participa en actividades que integran ritmo y melodía al movimiento y al desplazamiento.</i></li>
+                                <li><i>Integra los distintos lenguajes artísticos al describir su entorno social y cultural.</i></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="unit-box">
+                        <div class="unit-header">
+                            <span><i>Apreciación y Reconocimiento Cultural</i></span>
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div class="unit-body">
+                            <ul class="custom-list">
+                                <li><i>Reconoce la obra de artistas guatemaltecos.</i></li>
+                                <li><i>Identifica a los artistas guatemaltecos, los asocia con su obra y los ubica en el tiempo.</i></li>
+                                <li><i>Participa en el montaje de proyectos escénicos.</i></li>
+                                <li><i>Participa activamente en la organización de actividades para divulgar el arte de artistas guatemaltecos.</i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PESTAÑA V: MÉTODOS DIDÁCTICOS -->
+        <section class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-chalkboard-user fa-lg"></i>
+                    <h2 class="card-title"><i>V) Métodos Didácticos (Modelo Activo-Colaborativo CM)</i></h2>
+                </div>
+
+                <div class="highlight-badge">
+                    <span class="italic-title" style="margin-top:0;">Estructura del Período Doble (70 minutos / Metodología CM)</span>
+                    <p><i>Metodología fundamentada en el Constructivismo y el Aprendizaje Basado en Proyectos (ABP), promoviendo la participación activa y el aprendizaje significativo.</i></p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <div class="metodo-step">
+                        <span class="italic-title">1. Introducción Motivante (Activación de Presaberes)</span>
+                        <p><i>Este paso del proceso tiene como función activar el pre-saber del alumno y permitir al maestro determinar un diagnóstico. Se realizan cantos, discusiones, adivinanzas, lluvia de ideas y juegos motivacionales.</i></p>
+                    </div>
+
+                    <div class="metodo-step">
+                        <span class="italic-title">2. Trabajo Individual (Desarrollo de Potencialidades)</span>
+                        <p><i>En este momento el alumno pone en práctica toda su potencialidad individual, habilidades y destrezas mediante el estudio dirigido, elaboración de carteles, trifolios y desarrollo de proyectos artísticos individuales.</i></p>
+                    </div>
+
+                    <div class="metodo-step">
+                        <span class="italic-title">3. Trabajo en Equipo / Cooperativo ("Todos para uno y uno para todos")</span>
+                        <p><i>Interacción con roles definidos donde el estudiante pone sus destrezas individuales al servicio del grupo para unificarlas con las de sus compañeros y lograr una meta común con empatía y respeto.</i></p>
+                    </div>
+
+                    <div class="metodo-step">
+                        <span class="italic-title">4. Plenaria (Exposición Pública y Diálogo Socrático)</span>
+                        <p><i>Momento para hablar en público, exponer sentimientos, emociones y conclusiones. Se realiza de forma rotativa para que todos los alumnos experimenten el rol de expositor.</i></p>
+                    </div>
+                </div>
+
+                <span class="italic-title">Evaluación e Ideales de Convivencia</span>
+                <p><i>Evaluación Formativa:</i> Observación continua de habilidades y destrezas durante el período doble.<br>
+                <i>Evaluación Sumativa:</i> Organización de tareas, ejercicios, exámenes cortos, tarea integrada y proyectos.<br>
+                <i>Valores Vivenciados:</i> Tolerancia, trabajo en equipo, generosidad, solidaridad, lealtad institucional y calidad en el trabajo.</p>
+            </div>
+        </section>
+
+        <!-- PESTAÑA VI: BIBLIOGRAFÍA -->
+        <section class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-bookmark fa-lg"></i>
+                    <h2 class="card-title"><i>VI) Bibliografía y Fuentes de Referencia</i></h2>
+                </div>
+                
+                <ul class="custom-list">
+                    <li><i>Curriculum Nacional Base (CNB), Nivel Primario, Área de Expresión Artística - Guatemala.</i></li>
+                    <li><i>Planificación Anual de Teatro y Danza - Tercero Primaria, Colegio Montano Cortijo.</i></li>
+                    <li><i>Guías pedagógicas internas y dinámicas rítmico-corporales institucionales.</i></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PESTAÑA VII: CONTENIDOS -->
+        <section class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-list-check fa-lg"></i>
+                    <h2 class="card-title"><i>VII) Secuencia Temática de Contenidos por Unidades</i></h2>
+                </div>
+
+                <div class="grid-2">
+                    <!-- UNIDAD I: DANZA -->
+                    <div class="unit-box">
+                        <div class="unit-header">
+                            <span><i>UNIDAD I: DANZA Y MOVIMIENTO CREATIVO</i></span>
+                            <i class="fa-solid fa-shoe-prints"></i>
+                        </div>
+                        <div class="unit-body">
+                            <ul class="custom-list">
+                                <li><i>Recreación de actividades artísticas incorporando gestos, movimientos y desplazamientos en el espacio.</i></li>
+                                <li><i>Movimiento relacionado con ideas o elementos que sugiere la música.</i></li>
+                                <li><i>Descubrimiento de los timbres de la voz y ejercitación de su potencia.</i></li>
+                                <li><i>Incorporación del movimiento espontáneo y creativo a los recitados aprendidos.</i></li>
+                                <li><i>Mímica y movimiento corporal creativo.</i></li>
+                                <li><i>Ejecución de juegos musicales que incorporen desplazamientos.</i></li>
+                                <li><i>Interpretación de canciones que favorecen el movimiento y el juego.</i></li>
+                                <li><i>Participación en actividades rítmico-corporales acompañadas de melodías con su respectiva armonización.</i></li>
+                                <li><i>Relación entre ritmos corporales e instrumentales con textos poéticos (ritmo musical y ritmo de la palabra).</i></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- UNIDAD II: TEATRO -->
+                    <div class="unit-box">
+                        <div class="unit-header">
+                            <span><i>UNIDAD II: TEATRO Y ARTE DRAMÁTICO</i></span>
+                            <i class="fa-solid fa-masks-theater"></i>
+                        </div>
+                        <div class="unit-body">
+                            <ul class="custom-list">
+                                <li><i>Participación en montajes escolares con papeles y funciones adecuados a su edad.</i></li>
+                                <li><i>Escenificación de vivencias cotidianas utilizando la voz y el movimiento corporal.</i></li>
+                                <li><i>Participación en dramatizaciones a las que se ha adaptado un fondo musical.</i></li>
+                                <li><i>Diferenciación entre creador y creación.</i></li>
+                                <li><i>Apreciación de las obras artísticas propias y de las obras de los y las demás.</i></li>
+                                <li><i>Demostración de respeto por la obra de los artistas guatemaltecos.</i></li>
+                                <li><i>Identificación de artistas de la localidad y reconocimiento por sus aportes.</i></li>
+                                <li><i>Organización de las obras de los artistas guatemaltecos según su género (pintura, escultura, teatro, música) y la época en que fueron producidas.</i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer-bar">
+        <p><i>Colegio Montano Cortijo &copy; 2027 - Pizarra Digital de Planificación Pedagógica Institucional</i></p>
+    </footer>
+
+    <!-- SCRIPT DE NAVEGACIÓN Y PANTALLA COMPLETA -->
+    <script>
+        function switchTab(index) {
+            const tabs = document.querySelectorAll('.tab-item');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach((tab, i) => {
+                if (i === index) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            panels.forEach((panel, i) => {
+                if (i === index) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error al intentar activar pantalla completa: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
